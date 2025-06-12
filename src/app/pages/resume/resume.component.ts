@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Timeline } from 'primeng/timeline';
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
 import { MainTitleComponent } from '../../shared/components/main-title/main-title.component';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CardModule } from 'primeng/card';
@@ -7,7 +9,6 @@ import { ButtonModule } from 'primeng/button';
 import { Dialog } from 'primeng/dialog';
 import { NgClass } from '@angular/common';
 import { ProgressBar } from 'primeng/progressbar';
-
 
 interface EventItem {
   status?: string;
@@ -30,7 +31,6 @@ interface SkillItem {
 @Component({
   selector: 'app-resume',
   imports: [
-    Timeline,
     MainTitleComponent,
     ScrollPanelModule,
     CardModule,
@@ -53,9 +53,10 @@ export class ResumeComponent implements OnInit {
   devOpsSkills!: SkillItem[];
   currentImage: string = '';
 
+
   ngOnInit(): void {
-    this.intalization();
-  }
+      this.intalization();
+}
 
   intalization(): void {
     this.events = [
@@ -91,17 +92,7 @@ export class ResumeComponent implements OnInit {
         icon: 'fa-solid fa-chevron-right',
         isPresent: 'false',
         img: '/images/Mohamed Mahmoud El_Barbary_page-0001.jpg',
-      },
-      {
-        date: 'Sep 2024 - Apr 2025',
-        education: '',
-        description: '',
-        label: '',
-        residence: '',
-        icon: '',
-        isPresent: 'null',
-        img: '',
-      },
+      }
     ];
 
     this.skills = [
@@ -146,9 +137,10 @@ export class ResumeComponent implements OnInit {
     ];
   }
 
-  showDialog(event:string) {
+  showDialog(event: any) {
     this.visible = true;
     this.currentImage = event;
+    console.log('Image clicked:', event);
   }
 
   getCircumference(radius: number) {

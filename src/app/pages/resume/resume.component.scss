@@ -9,15 +9,18 @@
   transform: translateY(-6px);
 }
 
+@media screen and (max-width: 600px) {
+  :host ::ng-deep p-card {
+    width: 250px;
+    transform: translateY(0px);
+  }
+  
+}
+
 :host ::ng-deep .p-card-body {
   background-color: #222222 !important;
   color: white !important;
   padding: 0px 5px 30px 0px !important;
-}
-
-:host ::ng-deep .p-timeline-vertical .p-timeline-event-connector {
-  width: 1px;
-  background: rgba(197, 202, 213, 0.15);
 }
 
 :host ::ng-deep .p-card {
@@ -35,26 +38,6 @@
   padding: 2px 4px !important;
   border: 1px solid #f6b846 !important;
   border-radius: 5px !important;
-}
-
-:host ::ng-deep .p-timeline-event .p-card-content {
-  position: relative !important;
-}
-
-:host ::ng-deep .p-timeline-event:not(:last-child) .p-card-content::before {
-  content: "";
-  position: absolute;
-  width: 105%;
-  height: 2px;
-  left: -20px;
-  bottom: -15px;
-  background: radial-gradient(
-    ellipse at left,
-    rgba(197, 202, 213, 0.15) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  border-radius: 5px;
-  z-index: 1;
 }
 
 :host ::ng-deep .p-progressbar-value {

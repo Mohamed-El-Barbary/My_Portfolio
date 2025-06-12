@@ -15,58 +15,59 @@
             Education
           </h2>
         </div>
-
-        <p-timeline
-          class="pt-[30px]"
-          [value]="events"
-          styleClass="customized-timeline"
-          align="left"
-        >
-          <ng-template #marker>
-            <span
-              class="bullets flex w-[10px] h-[10px] items-center justify-center bg-[#666666] rounded-full z-10"
-            >
-            </span>
-          </ng-template>
-          <ng-template #content let-event>
-            <p-card>
-              @if (event.isPresent === 'true' || event.isPresent === 'false') {
-              <h3
+        <div class="timeline pt-10">
+          <ol class="relative border-s border-[#666666] left-[44px]">
+            <li class="mb-10 ms-4">
+              @for (event of events; track $index) {
+              <div
                 [ngClass]="{
-                  'text-[#f6b846] border-[#f6b846] ':
+                  'bg-[#f6b846] border-[#f6b846] ':
                     event.isPresent === 'true',
-                  'text-[#9a9a9a] border-[#666] ': event.isPresent === 'false'
+                  'bg-[#9a9a9a] border-[#666] ': event.isPresent === 'false'
                 }"
-                class="w-fit flex justify-center items-center text-[13px] font-normal mb-3 border-1 px-[4px] py-[2px] rounded-[5px]"
-              >
-                {{ event.date }}
-              </h3>
+                class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5"
+              ></div>
+              <p-card class="pt-[6px]">
+                @if (event.isPresent === 'true' || event.isPresent === 'false')
+                {
+                <h3
+                  [ngClass]="{
+                    'text-[#f6b846] border-[#f6b846] ':
+                      event.isPresent === 'true',
+                    'text-[#9a9a9a] border-[#666] ': event.isPresent === 'false'
+                  }"
+                  class="w-fit flex justify-center items-center text-[13px] font-normal mb-3 border-1 px-[4px] py-[2px] rounded-[5px]"
+                >
+                  {{ event.date }}
+                </h3>
+                }
+                <div class="name text-[17px] font-semibold mb-1">
+                  <span>{{ event.education }}</span>
+                </div>
+                <div class="residence text-[14px] text-[#999] mb-2">
+                  <span>{{ event.residence }}</span>
+                </div>
+                <div class="desc text-[14px] text-[#ffffff8c] mb-2">
+                  <span> {{ event.description }} </span>
+                </div>
+                <div class="cert-button flex items-center gap-1 group">
+                  <button
+                    (click)="showDialog(event.img)"
+                    class="text-sm font-semibold uppercase text-white/90 group-hover:text-[#f6b846] transition-all duration-300 ease-in-out cursor-pointer"
+                  >
+                    <a>{{ event.label }}</a>
+                  </button>
+                  <span
+                    class="text-[10px] text-white/90 group-hover:text-[#f6b846] transition-all duration-300 ease-in-out"
+                  >
+                    <i [class]="event.icon"></i>
+                  </span>
+                </div>
+              </p-card>
               }
-              <div class="name text-[17px] font-semibold mb-1">
-                <span>{{ event.education }}</span>
-              </div>
-              <div class="residence text-[14px] text-[#999] mb-2">
-                <span>{{ event.residence }}</span>
-              </div>
-              <div class="desc text-[14px] text-[#ffffff8c] mb-2">
-                <span> {{ event.description }} </span>
-              </div>
-              <div class="cert-button flex items-center gap-1 group">
-                <button
-                  (click)="showDialog(event.img)"
-                  class="text-sm font-semibold uppercase text-white/90 group-hover:text-[#f6b846] transition-all duration-300 ease-in-out cursor-pointer"
-                >
-                  <a>{{ event.label }}</a>
-                </button>
-                <span
-                  class="text-[10px] text-white/90 group-hover:text-[#f6b846] transition-all duration-300 ease-in-out"
-                >
-                  <i [class]="event.icon"></i>
-                </span>
-              </div>
-            </p-card>
-          </ng-template>
-        </p-timeline>
+            </li>
+          </ol>
+        </div>
       </div>
     </div>
     <div class="skills pb-12">
@@ -292,7 +293,6 @@
   </div>
   @if (currentImage) {
   <div class="popup relative z-[999999999]">
-    @for (item of events; track $index) {
     <p-dialog
       [(visible)]="visible"
       [modal]="true"
@@ -303,7 +303,6 @@
     >
       <img [src]="currentImage" alt="" />
     </p-dialog>
-    }
   </div>
   }
 </section>
