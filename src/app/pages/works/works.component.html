@@ -1,1 +1,53 @@
-<p>works works!</p>
+<section class="resume bg-[#222222] py-2" id="work-section">
+  <div class="custom-scroll-panel">
+    <div class="works-content pt-[30px]">
+      <app-main-title [title]="'Works'"></app-main-title>
+
+      <div class="ps-[40px] py-5">
+        <div class="flex justify-between items-center mb-8 flex-wrap gap-4">
+          <nav class="space-x-4">
+            @for (tab of tabs; track tab.value) {
+            <button
+              class="tab"
+              [ngClass]="{
+                'text-yellow-400 font-bold': activeTab === tab.value
+              }"
+              (click)="filterItems(tab.value)"
+            >
+              {{ tab.label }}
+            </button>
+            }
+          </nav>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          @for (item of filteredItems; let i = $index; track item.title) {
+          <div
+            class="bg-neutral-800 p-4 rounded-lg transition-all duration-300 ease-out"
+            [ngClass]="{
+              'opacity-0 scale-95': !animate,
+              'opacity-100 scale-100': animate
+            }"
+            [ngStyle]="{
+              transitionDelay: i * 100 + 'ms'
+            }"
+          >
+            <img alt="" [src]="item.image" class="w-full rounded h-[150px]" />
+            <div class="flex justify-between items-center mt-3">
+              <h3 class="text-lg font-bold">{{ item.title }}</h3>
+              <a
+                [href]="item.link"
+                target="_blank"
+                class="text-yellow-400 hover:underline"
+              >
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            <p class="text-sm text-gray-400">{{ item.type }}</p>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

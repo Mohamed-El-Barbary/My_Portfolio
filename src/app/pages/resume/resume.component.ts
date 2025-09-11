@@ -122,11 +122,16 @@ export class ResumeComponent implements OnInit {
       { title: 'Figma', percent: 50 }
     ];
 
-    this.backEndSkills = [
-      { title: 'C#', percent: 85 },
-      { title: 'SQL Server', percent: 85 },
-      { title: 'Database Design', percent: 80 },
-      { title: '.NET', percent: 50 },
+    this.backEndSkills = [    
+      { title: 'Database Design', percent: 85 },
+      { title: 'SQL Server', percent: 80 },            
+      { title: 'C#', percent: 90 },                   
+      { title: 'OOP', percent: 95 },                   
+      { title: 'Advanced C#', percent: 85 },       
+      { title: 'LINQ', percent: 80 },                   
+      { title: 'Entity Framework (EF Core)', percent: 75 },  
+      { title: 'ASP.NET Core MVC', percent: 70 },    
+      { title: '.NET', percent: 65 }, 
     ];
 
     this.devOpsSkills = [

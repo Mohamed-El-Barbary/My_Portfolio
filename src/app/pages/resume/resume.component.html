@@ -21,8 +21,7 @@
               @for (event of events; track $index) {
               <div
                 [ngClass]="{
-                  'bg-[#f6b846] border-[#f6b846] ':
-                    event.isPresent === 'true',
+                  'bg-[#f6b846] border-[#f6b846] ': event.isPresent === 'true',
                   'bg-[#9a9a9a] border-[#666] ': event.isPresent === 'false'
                 }"
                 class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5"
