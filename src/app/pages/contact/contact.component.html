@@ -1,1 +1,85 @@
-<p>contact works!</p>
+<section class="resume bg-[#222222] py-2">
+  <div class="custom-scroll-panel">
+    <div class="resume-content pt-[30px]">
+      <app-main-title [title]="'Resume'"></app-main-title>
+      <section class="bg-[#0f0f0f] text-white py-12 px-6 md:px-16">
+        <!-- Contact Info -->
+        <div class="grid md:grid-cols-2 gap-10 mb-12">
+          <!-- Left Info -->
+          <div>
+            <p class="mb-4">
+              <span class="font-semibold">ADDRESS:</span>
+              <span class="opacity-70"> . . . . London, UK</span>
+            </p>
+            <p>
+              <span class="font-semibold">PHONE:</span>
+              <span class="opacity-70"> . . . . +123 654 78900</span>
+            </p>
+          </div>
+
+          <!-- Right Info -->
+          <div>
+            <p class="mb-4">
+              <span class="font-semibold">EMAIL:</span>
+              <span class="opacity-70">
+                . . . . wellborn
+                <p>&#64;example.com</p>
+              </span>
+            </p>
+            <p>
+              <span class="font-semibold">FREELANCE:</span>
+              <span class="opacity-70"> . . . . Available</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <span class="bg-[#f6b846] w-4 h-4 rounded-full inline-block"></span>
+          Contact Form
+        </h2>
+
+        <hr class="border-[#333333] mb-10" />
+
+        <!-- Form -->
+        <form class="space-y-8">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <label class="block mb-2 opacity-70">Full Name</label>
+              <input
+                type="text"
+                class="w-full bg-transparent border-b border-[#444] focus:border-[#f6b846] outline-none py-2"
+              />
+            </div>
+
+            <div>
+              <label class="block mb-2 opacity-70">Email Address</label>
+              <input
+                type="email"
+                class="w-full bg-transparent border-b border-[#444] focus:border-[#f6b846] outline-none py-2"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="message" class="block mb-2 opacity-70"
+              >Your Message</label
+            >
+            <textarea
+              id="message"
+              placeholder="Write your message here"
+              rows="4"
+              class="w-full bg-transparent border-b border-[#444] focus:border-[#f6b846] outline-none py-2"
+            ></textarea>
+          </div>
+
+          <button
+            class="uppercase tracking-wide font-semibold mt-6 flex items-center gap-2 hover:opacity-75 transition"
+          >
+            Send Message
+            <span class="text-lg">→</span>
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+</section>
