@@ -38,15 +38,17 @@ intalization(): void {
     { label: 'All', value: 'all' },
     { label: 'Angular', value: 'angular' },
     { label: 'JS', value: 'js' },
+    { label: 'MVC', value: 'ASP .Net Core MVC' },
   ];
 
   this.items = [
-    { title: 'Weather App', type: 'js', image: '/images/Weather-App.png', link: 'https://mohamed-el-barbary.github.io/Weather-App/' },
     { title: 'Trendify E-Commerce', type: 'angular', image: '/images/Trendify.png', link: 'https://trendify-e-commerce-blond.vercel.app/' },
-    { title: 'ToDo App', type: 'js', image: '/images/To-Do-List-App.png', link: 'https://mohamed-el-barbary.github.io/To-Do-List-App/' },
-    { title: 'Game Over', type: 'js', image: '', link: 'https://via.placeholder.com/600x400/99cc66/000000?text=Sushi+Parlour' },
-    { title: 'My Portfolio', type: 'angular', image: 'images/Portfolio.png', link: 'https://my-portfolio-gamma-topaz-46.vercel.app/' },
+    { title: 'Gym Management System', type: 'ASP .Net Core MVC', image: '/images/GymManagementSystem.png', link: 'http://elbarbary01-gymmanagement.runasp.net/' },
+    { title: 'My Portfolio', type: 'angular', image: '/images/Portfolio.png', link: 'https://my-portfolio-gamma-topaz-46.vercel.app/' },
     { title: 'Book_Mark Crud System', type: 'js', image: '/images/Bookmarker-CRUD-System.png', link: 'https://mohamed-el-barbary.github.io/Bookmarker-CRUD-System/' },
+    { title: 'ToDo App', type: 'js', image: '/images/To-Do-List-App.png', link: 'https://mohamed-el-barbary.github.io/To-Do-List-App/' },
+    { title: 'Weather App', type: 'js', image: '/images/Weather-App.png', link: 'https://mohamed-el-barbary.github.io/Weather-App/' },
+    { title: 'Game Over', type: 'js', image: '', link: 'https://via.placeholder.com/600x400/99cc66/000000?text=Sushi+Parlour' },
     { title: 'Employee_Management Crud System', type: 'js', image: '/images/Employee-Management-CRUD-System.png', link: 'https://mohamed-el-barbary.github.io/Employee-Management-CRUD-System/' },
     { title: 'Qoute Generator', type: 'js', image: '/images/Qoute Generator.png', link: 'https://mohamed-el-barbary.github.io/Quote-Generator/' },
     { title: 'Daniels', type: 'js', image: '/images/Daniels.png', link: 'https://mohamed-el-barbary.github.io/Daniels/' },

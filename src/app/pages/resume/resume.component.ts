@@ -129,16 +129,13 @@ export class ResumeComponent implements OnInit {
       { title: 'OOP', percent: 95 },                   
       { title: 'Advanced C#', percent: 85 },       
       { title: 'LINQ', percent: 80 },                   
-      { title: 'Entity Framework (EF Core)', percent: 75 },  
-      { title: 'ASP.NET Core MVC', percent: 70 },    
-      { title: '.NET', percent: 65 }, 
+      { title: 'Entity Framework (EF Core)', percent: 90 },  
+      { title: 'ASP.NET Core ', percent: 85 },    
     ];
 
     this.devOpsSkills = [
       { title: 'Git & GitHub', percent: 85 },
       { title: 'Linux (Ubuntu)', percent: 70 },
-      { title: 'Bash', percent: 60 },
-      { title: 'Docker', percent: 60 },
     ];
   }
 
