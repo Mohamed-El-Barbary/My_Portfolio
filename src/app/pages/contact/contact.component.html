@@ -58,11 +58,22 @@
 
           <button
             type="submit"
-            class="uppercase tracking-wide font-semibold mt-6 flex items-center gap-2 hover:opacity-75 transition text-[#f6b846]"
+            class="uppercase tracking-wide font-semibold mt-6 flex items-center gap-2 hover:opacity-50 transition text-[#f6b846]"
           >
             Send Message
             <span class="text-lg">→</span>
           </button>
+          <!-- STATUS MESSAGE -->
+          <span
+            *ngIf="statusMessage"
+            class="block mt-4 font-medium"
+            [ngClass]="{
+              'text-green-500': statusType === 'success',
+              'text-red-500': statusType === 'error'
+            }"
+          >
+            {{ statusMessage }}
+          </span>
         </form>
       </div>
     </div>
