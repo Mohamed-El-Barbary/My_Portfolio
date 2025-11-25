@@ -9,6 +9,13 @@ body{
     background-color: #161616;
     color: white;
     font-family: "Lekton", monospace;
+    position: relative;
+    margin: 0;
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
 }
 
 @media (min-width: 1024px) {
@@ -39,5 +46,124 @@ body{
             height: 0;
             width: 0;
         }
+    }
+}
+
+/* ========================= */
+/* SPLASH SCREEN BACKGROUND */
+/* ========================= */
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #000, #111);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    flex-direction: column;
+}
+
+/* ========================= */
+/* WRAPPER FOR LOADER + TEXT */
+/* ========================= */
+.loader-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ========================= */
+/* CUSTOM LOADER */
+/* ========================= */
+.loader {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    position: relative;
+}
+
+.loader:before {
+    content: '';
+    width: 48px;
+    height: 5px;
+    background: #f6b846;
+    opacity: 0.25;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 50%;
+    animation: shadow 0.5s linear infinite;
+}
+
+.loader:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #f6b846;
+    animation: bxSpin 0.5s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+}
+
+/* ========================= */
+/* ANIMATION KEYFRAMES */
+/* ========================= */
+@keyframes bxSpin {
+    17% {
+        border-bottom-right-radius: 3px;
+    }
+
+    25% {
+        transform: translateY(9px) rotate(22.5deg);
+    }
+
+    50% {
+        transform: translateY(18px) scale(1, .9) rotate(45deg);
+        border-bottom-right-radius: 40px;
+    }
+
+    75% {
+        transform: translateY(9px) rotate(67.5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(90deg);
+    }
+}
+
+@keyframes shadow {
+
+    0%,
+    100% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.2, 1);
+    }
+}
+
+/* ========================= */
+/* TEXT BELOW LOADER */
+/* ========================= */
+.loader-text {
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
+    color: #f6b846;
+    font-weight: bold;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeInText 1s ease forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
     }
 }
