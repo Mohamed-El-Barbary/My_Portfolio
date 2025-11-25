@@ -24,15 +24,18 @@
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@primeng/themes": "^19.1.0",
     "@tailwindcss/postcss": "^4.1.4",
+    "@tsparticles/angular": "^3.0.0",
     "express": "^4.18.2",
     "flowbite": "^3.1.2",
     "ngx-typed-js": "^2.1.1",
+    "particles.js": "^2.0.0",
     "postcss": "^8.5.3",
     "primeicons": "^7.0.0",
     "primeng": "^19.1.0",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.4",
     "tslib": "^2.3.0",
+    "tsparticles": "^3.9.1",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
