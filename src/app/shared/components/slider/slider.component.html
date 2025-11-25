@@ -1,5 +1,5 @@
 <section
-  class="slider relative sm:fixed sm:top-[50px] lg:top-0 lg:relative z-[999999]"
+  class="slider relative sm:fixed sm:top-[50px] lg:top-0 lg:relative z-[9999]"
 >
   <div
     class="slider-container grid grid-cols-1 sm:grid-cols-1 sm:gap-2 fixed top-0 left-0 right-0 sm:static"
@@ -20,7 +20,12 @@
             >Mohamed El-Barbary</span
           >
           <ngx-typed-js
-            [strings]="['Programmer', 'Front-End Developer', 'Freelancer']"
+            [strings]="[
+              'Programmer',
+              'Back-End Developer',
+              'Front-End Developer',
+              'Freelancer'
+            ]"
             [loop]="true"
             [shuffle]="false"
             [smartBackspace]="true"
@@ -41,51 +46,51 @@
     </div>
     <div class="down-slider">
       <ul
-        class="grid grid-cols-4 sm:grid-cols-1 bg-[#222222] uppercase sm:py-4"
+        class="grid grid-cols-4 sm:grid-cols-1 bg-[#222222] uppercase sm:py-4 md:py-0"
       >
         <li
-          class="border-b-1 border-[#303030] pb-3 pt-4 hover:text-[#f6b846] transition-all duration-300 cursor-pointer"
+          class="border-b-1 border-[#303030] hover:text-[#f6b846] transition-all duration-300 cursor-pointer"
         >
           <a
             routerLink="/about"
             routerLinkActive="text-[#f6b846]"
-            class="text-[12px] font-medium flex flex-col items-center gap-1"
+            class="text-[12px] pb-3 pt-5 font-medium flex flex-col items-center gap-1"
           >
             <i class="fa-regular fa-user text-xl"></i>
             About
           </a>
         </li>
         <li
-          class="border-b-1 border-[#303030] pb-3 pt-4 hover:text-[#f6b846] transition-all duration-300 cursor-pointer"
+          class="border-b-1 border-[#303030] hover:text-[#f6b846] transition-all duration-300 cursor-pointer"
         >
           <a
             routerLink="/resume"
             routerLinkActive="text-[#f6b846]"
-            class="text-[12px] font-medium flex flex-col items-center gap-1"
+            class="text-[12px] pb-3 pt-4 font-medium flex flex-col items-center gap-1"
           >
             <i class="fa-solid fa-rectangle-list text-xl"></i>
             Resume
           </a>
         </li>
         <li
-          class="border-b-1 border-[#303030] pb-3 pt-4 hover:text-[#f6b846] transition-all duration-300 cursor-pointer"
+          class="border-b-1 border-[#303030] hover:text-[#f6b846] transition-all duration-300 cursor-pointer"
         >
           <a
             routerLink="/works"
             routerLinkActive="text-[#f6b846]"
-            class="text-[12px] font-medium flex flex-col items-center gap-1"
+            class="text-[12px] pb-3 pt-4 font-medium flex flex-col items-center gap-1"
           >
             <i class="fa-solid fa-eye text-xl"></i>
             Works
           </a>
         </li>
         <li
-          class="pb-3 pt-4 hover:text-[#f6b846] transition-all duration-300 cursor-pointer"
+          class="hover:text-[#f6b846] transition-all duration-300 cursor-pointer"
         >
           <a
             routerLink="/contact"
             routerLinkActive="text-[#f6b846]"
-            class="text-[12px] font-medium flex flex-col items-center gap-1"
+            class="text-[12px] pb-5 pt-4 font-medium flex flex-col items-center gap-1"
           >
             <i class="fa-solid fa-paper-plane text-xl"></i>
             Contact
