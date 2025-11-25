@@ -99,7 +99,7 @@ export class ResumeComponent implements OnInit {
       { title: 'HTML / CSS', percent: 95 },
       { title: 'Angular / TypeScript', percent: 80 },
       { title: 'JavaScript', percent: 85 },
-      { title: 'C# / SQL', percent: 75 },
+      { title: 'C# / SQL', percent: 80 },
     ];
 
     this.features = [
@@ -109,7 +109,6 @@ export class ResumeComponent implements OnInit {
       'Computer Networks Basics	',
       'AI Fundamentals',
       'Virtualization Basics',
-      'SEO Optimize',
       'Responsive and mobile-ready',
     ];
 

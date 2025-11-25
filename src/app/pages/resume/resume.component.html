@@ -281,9 +281,58 @@
           </div>
 
           <div class="grid gap-4 pt-4 ps-4">
-            <div class="progress-bar grid gap-1">
-              <span class="text-base text-white opacity-90">Git & GitHub</span>
-              <p-progressbar [value]="85" />
+            <!-- English -->
+            <div
+              class="relative p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
+            >
+              <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center gap-2">
+                  <img
+                    src="https://flagcdn.com/w20/gb.png"
+                    alt="English"
+                    class="rounded"
+                  />
+                  <span class="text-base text-white opacity-90">English</span>
+                </div>
+                <span
+                  class="text-[#f6b846] font-semibold group-hover:scale-110 transition"
+                >
+                  65%
+                </span>
+              </div>
+
+              <p-progressbar
+                [value]="65"
+                class="shadow-[0_0_10px_rgba(246,184,70,0.4)]"
+                styleClass="h-3 rounded-full overflow-hidden"
+              ></p-progressbar>
+            </div>
+
+            <!-- Arabic -->
+            <div
+              class="relative p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300 group"
+            >
+              <div class="flex justify-between items-center mb-2">
+                <div class="flex items-center gap-2">
+                  <img
+                    src="https://flagcdn.com/w20/eg.png"
+                    alt="Arabic"
+                    class="rounded"
+                  />
+                  <span class="text-base text-white opacity-90">Arabic</span>
+                </div>
+                <span
+                  class="text-[#f6b846] font-semibold group-hover:scale-110 transition"
+                >
+                  Native
+                </span>
+              </div>
+
+              <p-progressbar
+                [value]="100"
+                class="shadow-[0_0_12px_rgba(246,184,70,0.5)]"
+                styleClass="h-3 rounded-full overflow-hidden"
+              ></p-progressbar>
             </div>
           </div>
         </div>
