@@ -4,13 +4,13 @@
   <div
     class="hero-sec-content relatives overflow-hidden bg-[#222222] flex flex-col gap-2"
   >
-    <div class="hero-images">
-      <img
-        src="/images/dev-bg-3-1200x812.jpg"
-        alt=""
-        class="w-full h-[310px] rounded-sm"
-      />
+    <div class="hero-images relative">
+      <img src="/images/bg.jpg" alt="" class="w-full h-[310px] rounded-sm" />
+      <div
+        class="absolute inset-0 bg-black/70 rounded-sm pointer-events-none"
+      ></div>
     </div>
+
     <div class="hero-sec-info relative">
       <div
         class="about-img absolute top-[-130px] left-1/2 translate-x-[-50%] z-50 before:absolute before:left-[-12px] before:top-[10px] before:w-[140px] before:h-[140px] before:bg-[#f6b846] before:opacity-[.3] before:rounded-full before:-z-10"
@@ -25,7 +25,12 @@
         <div class="about-caption text-center">
           <h1 class="text-3xl font-bold text-white mb-2">Mohamed El-Barbary</h1>
           <ngx-typed-js
-            [strings]="['Programmer', 'Front-End Developer', 'Freelancer']"
+            [strings]="[
+              'Programmer',
+              'Back-End Developer',
+              'Front-End Developer',
+              'Freelancer'
+            ]"
             [loop]="true"
             [shuffle]="false"
             [smartBackspace]="true"
