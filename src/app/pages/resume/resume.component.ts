@@ -73,7 +73,7 @@ export class ResumeComponent implements OnInit {
         date: '2021 - 2026',
         education: 'Tanta University',
         description:
-          'Tanta University is a public university located in Tanta, Egypt.',
+          'Tanta University is a public<br>university located in Tanta, Egypt.',
         label: 'Certificate',
         residence: 'Egypt',
         icon: 'fa-solid fa-chevron-right',
