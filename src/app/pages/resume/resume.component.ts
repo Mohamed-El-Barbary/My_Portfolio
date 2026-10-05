@@ -23,6 +23,13 @@ interface EventItem {
   isPresent?: string;
 }
 
+// 🆕 NEW: shape of each column (Education / Experience)
+interface TimelineSection {
+  title: string;
+  icon: string;
+  items: EventItem[];
+}
+
 interface SkillItem {
   title: string;
   percent: number;
@@ -37,13 +44,16 @@ interface SkillItem {
     ButtonModule,
     Dialog,
     NgClass,
-    ProgressBar
+    ProgressBar,
   ],
   templateUrl: './resume.component.html',
   styleUrl: './resume.component.scss',
 })
 export class ResumeComponent implements OnInit {
-  events!: EventItem[];
+  educationEvents!: EventItem[];
+  experienceEvents!: EventItem[];
+  timelineSections!: TimelineSection[];
+
   visible: boolean = false;
   popupImg: string = '';
   skills!: SkillItem[];
@@ -53,34 +63,36 @@ export class ResumeComponent implements OnInit {
   devOpsSkills!: SkillItem[];
   currentImage: string = '';
 
-
   ngOnInit(): void {
-      this.intalization();
-}
+    this.intalization();
+  }
 
   intalization(): void {
-    this.events = [
+    this.educationEvents = [
       {
-        date: '2021 - Present',
+        date: '2021 - 2026',
         education: 'Tanta University',
         description:
           'Tanta University is a public university located in Tanta, Egypt.',
         label: 'Certificate',
         residence: 'Egypt',
         icon: 'fa-solid fa-chevron-right',
-        isPresent: 'true',
-        img: '',
+        isPresent: 'false',
+        img: '/images/University_Certificate.jpg',
       },
+    ];
+
+    this.experienceEvents = [
       {
-        date: 'May 2025 - Present',
+        date: 'May 2025 - Dec 2025',
         education: 'Route (Back-End Intern)',
         description:
           'Interning at Route, focusing on .NET for Back-End development and improving server-side application skills.',
         label: 'Certificate',
         residence: 'Egypt',
         icon: 'fa-solid fa-chevron-right',
-        isPresent: 'true',
-        img: '',
+        isPresent: 'false',
+        img: '/images/Backend_Certificate.jpg',
       },
       {
         date: 'Sep 2024 - Apr 2025',
@@ -92,7 +104,20 @@ export class ResumeComponent implements OnInit {
         icon: 'fa-solid fa-chevron-right',
         isPresent: 'false',
         img: '/images/Mohamed Mahmoud El_Barbary_page-0001.jpg',
-      }
+      },
+    ];
+
+    this.timelineSections = [
+      {
+        title: 'Education',
+        icon: 'fa-solid fa-graduation-cap',
+        items: this.educationEvents,
+      },
+      {
+        title: 'Experience',
+        icon: 'fa-solid fa-briefcase',
+        items: this.experienceEvents,
+      },
     ];
 
     this.skills = [
@@ -106,7 +131,7 @@ export class ResumeComponent implements OnInit {
       'Data Structures & Algorithms',
       'Database Design & SQL Concepts',
       'Object-Oriented Programming (OOP)',
-      'Computer Networks Basics	',
+      'Computer Networks Basics',
       'AI Fundamentals',
       'Virtualization Basics',
       'Responsive and mobile-ready',
@@ -118,18 +143,18 @@ export class ResumeComponent implements OnInit {
       { title: 'JavaScript (ES6+)', percent: 85 },
       { title: 'Bootstrap', percent: 80 },
       { title: 'Tailwind CSS', percent: 90 },
-      { title: 'Figma', percent: 50 }
+      { title: 'Figma', percent: 50 },
     ];
 
-    this.backEndSkills = [    
+    this.backEndSkills = [
       { title: 'Database Design', percent: 85 },
-      { title: 'SQL Server', percent: 80 },            
-      { title: 'C#', percent: 90 },                   
-      { title: 'OOP', percent: 95 },                   
-      { title: 'Advanced C#', percent: 85 },       
-      { title: 'LINQ', percent: 80 },                   
-      { title: 'Entity Framework (EF Core)', percent: 90 },  
-      { title: 'ASP.NET Core ', percent: 85 },    
+      { title: 'SQL Server', percent: 80 },
+      { title: 'C#', percent: 90 },
+      { title: 'OOP', percent: 95 },
+      { title: 'Advanced C#', percent: 85 },
+      { title: 'LINQ', percent: 80 },
+      { title: 'Entity Framework (EF Core)', percent: 90 },
+      { title: 'ASP.NET Core', percent: 85 },
     ];
 
     this.devOpsSkills = [
@@ -141,7 +166,6 @@ export class ResumeComponent implements OnInit {
   showDialog(event: any) {
     this.visible = true;
     this.currentImage = event;
-    console.log('Image clicked:', event);
   }
 
   getCircumference(radius: number) {

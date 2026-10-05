@@ -2,71 +2,99 @@
   <div class="custom-scroll-panel">
     <div class="resume-content pt-[30px]">
       <app-main-title [title]="'Resume'"></app-main-title>
-      <div class="card pb-5">
-        <div
-          class="relative grid grid-cols-[auto_1fr] items-center gap-3 ps-[40px] py-5 before:content-[''] before:absolute before:top-full before:w-[350px] before:h-[1px] before:bg-[radial-gradient(ellipse_at_left,_rgba(197,_202,_213,_0.15)_0%,_rgba(255,_255,_255,_0)_70%)] before:left-[40px]"
-        >
-          <span
-            class="inline-grid w-[50px] h-[50px] place-items-center rounded-full text-[#f6b846] border-1 border-[#f6b846] bg-[#222222]"
-          >
-            <i class="fa-solid fa-graduation-cap text-[24px]"></i>
-          </span>
-          <h2 class="text-[17px] font-semibold text-white opacity-90 uppercase">
-            Education
-          </h2>
-        </div>
-        <div class="timeline pt-10">
-          <ol class="relative border-s border-[#666666] left-[44px]">
-            <li class="mb-10 ms-4">
-              @for (event of events; track $index) {
+
+      <!-- Education (50%) | Experience (50%) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-full pb-0">
+        @for (
+          section of timelineSections;
+          track section.title;
+          let first = $first
+        ) {
+          <div class="relative w-full max-w-full rounded-xl p-4">
+            @if (first) {
               <div
-                [ngClass]="{
-                  'bg-[#f6b846] border-[#f6b846] ': event.isPresent === 'true',
-                  'bg-[#9a9a9a] border-[#666] ': event.isPresent === 'false'
-                }"
-                class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5"
+                class="hidden lg:block absolute top-0 bottom-0 right-[-15px] w-px bg-[#333333]"
               ></div>
-              <p-card class="pt-[6px]">
-                @if (event.isPresent === 'true' || event.isPresent === 'false')
-                {
-                <h3
-                  [ngClass]="{
-                    'text-[#f6b846] border-[#f6b846] ':
-                      event.isPresent === 'true',
-                    'text-[#9a9a9a] border-[#666] ': event.isPresent === 'false'
-                  }"
-                  class="w-fit flex justify-center items-center text-[13px] font-normal mb-3 border-1 px-[4px] py-[2px] rounded-[5px]"
-                >
-                  {{ event.date }}
-                </h3>
+            }
+            <div
+              class="relative grid grid-cols-[auto_1fr_auto] items-center gap-3 pb-4 ps-[10px] before:content-[''] before:absolute before:top-full before:w-full before:h-[1px] before:bg-[radial-gradient(ellipse_at_left,_rgba(197,_202,_213,_0.15)_0%,_rgba(255,_255,_255,_0)_70%)] before:left-[10px]"
+            >
+              <span
+                class="inline-grid w-[50px] h-[50px] place-items-center rounded-full text-[#f6b846] border-1 border-[#f6b846] bg-[#222222]"
+              >
+                <i [class]="section.icon + ' text-[24px]'"></i>
+              </span>
+              <h2
+                class="text-[17px] font-semibold text-white opacity-90 uppercase"
+              >
+                {{ section.title }}
+              </h2>
+              <span
+                class="text-xs px-2 py-0.5 rounded-full bg-neutral-800 text-[#f6b846]"
+              >
+                {{ section.items.length }}
+              </span>
+            </div>
+
+            <div class="timeline pt-4">
+              <ol class="relative border-s border-[#666666] ms-[10px]">
+                @for (event of section.items; track $index) {
+                  <li class="mb-4 last:mb-0 ms-6">
+                    <div
+                      [ngClass]="{
+                        'bg-[#f6b846] border-[#f6b846] ':
+                          event.isPresent === 'true',
+                        'bg-[#9a9a9a] border-[#666] ':
+                          event.isPresent === 'false',
+                      }"
+                      class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5"
+                    ></div>
+                    <p-card class="pt-[6px] [&_.p-card-body]:!p-3">
+                      @if (
+                        event.isPresent === "true" ||
+                        event.isPresent === "false"
+                      ) {
+                        <h3
+                          [ngClass]="{
+                            'text-[#f6b846] border-[#f6b846] ':
+                              event.isPresent === 'true',
+                            'text-[#9a9a9a] border-[#666] ':
+                              event.isPresent === 'false',
+                          }"
+                          class="w-fit flex justify-center items-center text-[13px] font-normal mb-3 border-1 px-[4px] py-[2px] rounded-[5px]"
+                        >
+                          {{ event.date }}
+                        </h3>
+                      }
+                      <div class="name text-[17px] font-semibold mb-1">
+                        <span>{{ event.education }}</span>
+                      </div>
+                      <div class="residence text-[14px] text-[#999] mb-2">
+                        <span>{{ event.residence }}</span>
+                      </div>
+                      <div class="desc text-[14px] text-[#ffffff8c] mb-2">
+                        <span> {{ event.description }} </span>
+                      </div>
+                      <div class="cert-button flex items-center gap-1 group">
+                        <button
+                          (click)="showDialog(event.img)"
+                          class="text-sm font-semibold uppercase text-white/90 group-hover:text-[#f6b846] transition-all duration-300 ease-in-out cursor-pointer"
+                        >
+                          <a>{{ event.label }}</a>
+                        </button>
+                        <span
+                          class="text-[10px] text-white/90 group-hover:text-[#f6b846] transition-all duration-300 ease-in-out"
+                        >
+                          <i [class]="event.icon"></i>
+                        </span>
+                      </div>
+                    </p-card>
+                  </li>
                 }
-                <div class="name text-[17px] font-semibold mb-1">
-                  <span>{{ event.education }}</span>
-                </div>
-                <div class="residence text-[14px] text-[#999] mb-2">
-                  <span>{{ event.residence }}</span>
-                </div>
-                <div class="desc text-[14px] text-[#ffffff8c] mb-2">
-                  <span> {{ event.description }} </span>
-                </div>
-                <div class="cert-button flex items-center gap-1 group">
-                  <button
-                    (click)="showDialog(event.img)"
-                    class="text-sm font-semibold uppercase text-white/90 group-hover:text-[#f6b846] transition-all duration-300 ease-in-out cursor-pointer"
-                  >
-                    <a>{{ event.label }}</a>
-                  </button>
-                  <span
-                    class="text-[10px] text-white/90 group-hover:text-[#f6b846] transition-all duration-300 ease-in-out"
-                  >
-                    <i [class]="event.icon"></i>
-                  </span>
-                </div>
-              </p-card>
-              }
-            </li>
-          </ol>
-        </div>
+              </ol>
+            </div>
+          </div>
+        }
       </div>
     </div>
     <div class="skills pb-12">
@@ -93,44 +121,44 @@
 
           <div class="grid grid-cols-2 gap-6 pt-4">
             @for (skill of skills; track skill.title) {
-            <div class="flex flex-col items-center space-y-2">
-              <div class="relative h-[100px] w-[100px]">
-                <svg
-                  viewBox="0 0 72 72"
-                  class="w-full h-full transform -rotate-90"
-                >
-                  <circle
-                    cx="36"
-                    cy="36"
-                    r="30"
-                    class="text-gray-700"
-                    stroke="currentColor"
-                    stroke-width="3"
-                    fill="transparent"
-                  />
-                  <circle
-                    cx="36"
-                    cy="36"
-                    r="30"
-                    class="text-yellow-500"
-                    stroke="currentColor"
-                    stroke-width="3"
-                    fill="transparent"
-                    [attr.stroke-dasharray]="getCircumference(30)"
-                    [attr.stroke-dashoffset]="getOffset(30, skill.percent)"
-                    stroke-linecap="round"
-                  />
-                </svg>
-                <span
-                  class="absolute inset-0 flex items-center justify-center text-base font-semibold text-white"
-                >
-                  {{ skill.percent }}%
-                </span>
+              <div class="flex flex-col items-center space-y-2">
+                <div class="relative h-[100px] w-[100px]">
+                  <svg
+                    viewBox="0 0 72 72"
+                    class="w-full h-full transform -rotate-90"
+                  >
+                    <circle
+                      cx="36"
+                      cy="36"
+                      r="30"
+                      class="text-gray-700"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      fill="transparent"
+                    />
+                    <circle
+                      cx="36"
+                      cy="36"
+                      r="30"
+                      class="text-yellow-500"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      fill="transparent"
+                      [attr.stroke-dasharray]="getCircumference(30)"
+                      [attr.stroke-dashoffset]="getOffset(30, skill.percent)"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  <span
+                    class="absolute inset-0 flex items-center justify-center text-base font-semibold text-white"
+                  >
+                    {{ skill.percent }}%
+                  </span>
+                </div>
+                <p class="text-center text-sm text-white opacity-80">
+                  {{ skill.title }}
+                </p>
               </div>
-              <p class="text-center text-sm text-white opacity-80">
-                {{ skill.title }}
-              </p>
-            </div>
             }
           </div>
         </div>
@@ -155,12 +183,12 @@
           <div class="grid grid-cols-1 pt-5 gap-6 ps-[15px]">
             <ul class="space-y-3">
               @for (feature of features; track feature) {
-              <li class="flex items-start text-base text-gray-200">
-                <span class="text-[#f6b846] text-lg mt-[2px] me-3">
-                  <i class="fa-solid fa-check"></i>
-                </span>
-                {{ feature }}
-              </li>
+                <li class="flex items-start text-base text-gray-200">
+                  <span class="text-[#f6b846] text-lg mt-[2px] me-3">
+                    <i class="fa-solid fa-check"></i>
+                  </span>
+                  {{ feature }}
+                </li>
               }
             </ul>
           </div>
@@ -188,18 +216,17 @@
 
           <div class="grid gap-4 pt-4 ps-4">
             @for (skill of frontEndSkills; track $index) {
-            <div class="progress-bar grid gap-1">
-              <span class="text-base text-white opacity-90">
-                {{ skill.title }}
-              </span>
-              <p-progressbar [value]="skill.percent" />
-            </div>
+              <div class="progress-bar grid gap-1">
+                <span class="text-base text-white opacity-90">
+                  {{ skill.title }}
+                </span>
+                <p-progressbar [value]="skill.percent" />
+              </div>
             }
           </div>
         </div>
 
         <!-- Back-End Column -->
-
         <div class="w-full max-w-full rounded-xl p-6">
           <div
             class="relative grid grid-cols-[auto_1fr] items-center gap-3 pb-4 ps-[10px] before:content-[''] before:absolute before:top-full before:w-full before:h-[1px] before:bg-[radial-gradient(ellipse_at_left,_rgba(197,_202,_213,_0.15)_0%,_rgba(255,_255,_255,_0)_70%)] before:left-[10px]"
@@ -218,18 +245,17 @@
 
           <div class="grid gap-4 pt-4 ps-4">
             @for (skill of backEndSkills; track $index) {
-            <div class="progress-bar grid gap-1">
-              <span class="text-base text-white opacity-90">{{
-                skill.title
-              }}</span>
-              <p-progressbar [value]="skill.percent" />
-            </div>
+              <div class="progress-bar grid gap-1">
+                <span class="text-base text-white opacity-90">{{
+                  skill.title
+                }}</span>
+                <p-progressbar [value]="skill.percent" />
+              </div>
             }
           </div>
         </div>
 
         <!-- DevOps & Tools Column -->
-
         <div
           class="relative w-full max-w-full rounded-xl p-6 before:content-[''] before:absolute before:top-0 before:bottom-0 before:w-px before:right-[-15px] before:bg-[#333333] before:hidden lg:before:block"
         >
@@ -250,18 +276,17 @@
 
           <div class="grid gap-4 pt-4 ps-4">
             @for (skill of devOpsSkills; track $index) {
-            <div class="progress-bar grid gap-1">
-              <span class="text-base text-white opacity-90">{{
-                skill.title
-              }}</span>
-              <p-progressbar [value]="skill.percent" />
-            </div>
+              <div class="progress-bar grid gap-1">
+                <span class="text-base text-white opacity-90">{{
+                  skill.title
+                }}</span>
+                <p-progressbar [value]="skill.percent" />
+              </div>
             }
           </div>
         </div>
 
         <!-- Language -->
-
         <div
           class="relative w-full max-w-full rounded-xl p-6 before:content-[''] before:absolute before:top-0 before:bottom-0 before:w-px before:right-[-15px] before:bg-[#333333] before:hidden lg:before:block"
         >
@@ -340,17 +365,17 @@
     </div>
   </div>
   @if (currentImage) {
-  <div class="popup relative z-[999999999]">
-    <p-dialog
-      [(visible)]="visible"
-      [modal]="true"
-      [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
-      [style]="{ width: '50vw' }"
-      [draggable]="false"
-      [resizable]="false"
-    >
-      <img [src]="currentImage" alt="" />
-    </p-dialog>
-  </div>
+    <div class="popup relative z-[999999999]">
+      <p-dialog
+        [(visible)]="visible"
+        [modal]="true"
+        [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+        [style]="{ width: '50vw' }"
+        [draggable]="false"
+        [resizable]="false"
+      >
+        <img [src]="currentImage" alt="" />
+      </p-dialog>
+    </div>
   }
 </section>
