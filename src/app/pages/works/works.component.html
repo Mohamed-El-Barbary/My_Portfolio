@@ -4,26 +4,75 @@
       <app-main-title [title]="'Works'"></app-main-title>
 
       <div class="ps-[40px] py-5">
-        <div class="flex justify-between items-center mb-8 flex-wrap gap-4">
-          <nav class="space-x-4">
+        <!-- Level 1: main groups -->
+        <div class="mb-4">
+          <nav class="inline-flex flex-wrap items-center gap-1 bg-neutral-800 p-1 rounded-full">
             @for (tab of tabs; track tab.value) {
             <button
-              class="tab"
-              [ngClass]="{
-                'text-yellow-400 font-bold': activeTab === tab.value
-              }"
+              class="tab flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-300"
+              [ngClass]="
+                activeTab === tab.value
+                  ? 'bg-yellow-400 text-black font-bold shadow-lg'
+                  : 'text-gray-400 hover:text-white'
+              "
               (click)="filterItems(tab.value)"
             >
+              <i [class]="tab.icon"></i>
               {{ tab.label }}
+              <span
+                class="text-xs px-2 py-0.5 rounded-full"
+                [ngClass]="
+                  activeTab === tab.value
+                    ? 'bg-black/20 text-black'
+                    : 'bg-neutral-700 text-gray-300'
+                "
+              >
+                {{ countFor(tab) }}
+              </span>
             </button>
             }
           </nav>
         </div>
 
+        <!-- Level 2: sub tabs (Angular / JS  |  MVC / API) -->
+        <div class="mb-8 min-h-[36px]">
+          @if (subTabs.length) {
+          <nav class="flex flex-wrap items-center gap-2 border-l-2 border-yellow-400 ps-3">
+            <button
+              class="tab px-3 py-1 rounded-md text-xs border transition-all duration-300"
+              [ngClass]="
+                activeSub === 'all'
+                  ? 'border-yellow-400 text-yellow-400 font-bold'
+                  : 'border-neutral-700 text-gray-400 hover:text-white'
+              "
+              (click)="filterSub('all')"
+            >
+              All {{ activeGroup?.label }}
+            </button>
+            @for (sub of subTabs; track sub.value) {
+            <button
+              class="tab flex items-center gap-2 px-3 py-1 rounded-md text-xs border transition-all duration-300"
+              [ngClass]="
+                activeSub === sub.value
+                  ? 'border-yellow-400 text-yellow-400 font-bold'
+                  : 'border-neutral-700 text-gray-400 hover:text-white'
+              "
+              (click)="filterSub(sub.value)"
+            >
+              <i [class]="sub.icon"></i>
+              {{ sub.label }}
+              <span class="text-gray-500">({{ countFor(sub) }})</span>
+            </button>
+            }
+          </nav>
+          }
+        </div>
+
+        <!-- Cards -->
         <div class="grid md:grid-cols-2 gap-8">
           @for (item of filteredItems; let i = $index; track item.title) {
           <div
-            class="bg-neutral-800 p-4 rounded-lg transition-all duration-300 ease-out"
+            class="group relative bg-neutral-800 p-4 rounded-lg transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-400/10"
             [ngClass]="{
               'opacity-0 scale-95': !animate,
               'opacity-100 scale-100': animate
@@ -32,6 +81,11 @@
               transitionDelay: i * 100 + 'ms'
             }"
           >
+            <span
+              class="absolute top-6 left-6 z-10 text-[11px] font-bold px-2 py-1 rounded bg-black/70 text-yellow-400"
+            >
+              {{ labelFor(item.type) }}
+            </span>
             <img alt="" [src]="item.image" class="w-full rounded h-[150px]" />
             <div class="flex justify-between items-center mt-3">
               <h3 class="text-lg font-bold">{{ item.title }}</h3>
@@ -44,6 +98,11 @@
               </a>
             </div>
             <p class="text-sm text-gray-400">{{ item.type }}</p>
+          </div>
+          } @empty {
+          <div class="md:col-span-2 text-center text-gray-400 py-12 border border-dashed border-neutral-700 rounded-lg">
+            <i class="fa-solid fa-hammer text-yellow-400 text-2xl mb-3"></i>
+            <p>Coming soon...</p>
           </div>
           }
         </div>
