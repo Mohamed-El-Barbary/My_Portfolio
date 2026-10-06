@@ -1,7 +1,4 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MainTitleComponent } from '../../shared/components/main-title/main-title.component';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { CardModule } from 'primeng/card';
@@ -83,6 +80,17 @@ export class ResumeComponent implements OnInit {
     ];
 
     this.experienceEvents = [
+      {
+        date: 'September 2026',
+        education: 'iCareer (Software Engineering Intern)',
+        description:
+          'Completed a one-month Software Engineering internship at iCareer, gaining practical experience in Agile methodologies, requirements analysis, project management, and .NET development.',
+        label: 'Certificate',
+        residence: 'Egypt',
+        icon: 'fa-solid fa-chevron-right',
+        isPresent: 'false',
+        img: '/images/iCareer_Certificate.jpg',
+      },
       {
         date: 'May 2025 - Dec 2025',
         education: 'Route (Back-End Intern)',
