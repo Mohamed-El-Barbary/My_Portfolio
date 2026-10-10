@@ -32,6 +32,15 @@ interface SkillItem {
   percent: number;
 }
 
+interface CertificateItem {
+  title: string;
+  issuer: string;
+  date: string;
+  type: 'Certificate' | 'Training';
+  icon: string;
+  description?: string;
+  img?: string;
+}
 @Component({
   selector: 'app-resume',
   imports: [
@@ -50,6 +59,7 @@ export class ResumeComponent implements OnInit {
   educationEvents!: EventItem[];
   experienceEvents!: EventItem[];
   timelineSections!: TimelineSection[];
+  certificates!: CertificateItem[];
 
   visible: boolean = false;
   popupImg: string = '';
@@ -89,30 +99,31 @@ export class ResumeComponent implements OnInit {
         residence: 'Egypt',
         icon: 'fa-solid fa-chevron-right',
         isPresent: 'false',
-        img: '/images/iCareer_Certificate.jpg',
+        img: '/images/iCareer_Certificate.png',
       },
+    ];
+
+    this.certificates = [
       {
-        date: 'May 2025 - Dec 2025',
-        education: 'Route (Back-End Intern)',
+        title: 'Front-End Development Diploma',
+        issuer: 'Route Academy',
+        date: 'Apr 2025',
+        type: 'Training',
+        icon: 'fa-brands fa-angular',
         description:
-          'Interning at Route, focusing on .NET for Back-End development and improving server-side application skills.',
-        label: 'Certificate',
-        residence: 'Egypt',
-        icon: 'fa-solid fa-chevron-right',
-        isPresent: 'false',
-        img: '/images/Backend_Certificate.jpg',
-      },
-      {
-        date: 'Sep 2024 - Apr 2025',
-        education: 'Route (Front-End Intern)',
-        description:
-          'Completed an intensive Front-End Diploma at Route with real-world Angular projects and hands-on experience.',
-        label: 'Certificate',
-        residence: 'Egypt',
-        icon: 'fa-solid fa-chevron-right',
-        isPresent: 'false',
+          'Intensive program covering Angular, TypeScript and real-world projects.',
         img: '/images/Mohamed Mahmoud El_Barbary_page-0001.jpg',
       },
+      {
+        title: 'ASP.NET Core Back-End Diploma',
+        issuer: 'Route Academy',
+        date: 'Dec 2025',
+        type: 'Training',
+        icon: 'fa-solid fa-server',
+        description:
+          'Hands-on .NET training: ASP.NET Core, EF Core and building APIs.',
+        img: '/images/Backend_Certificate.jpg',
+      }
     ];
 
     this.timelineSections = [
